@@ -4,44 +4,51 @@
 
   const prop = defineProps(Props)
   const emit = defineEmits(Emits)
-  const event = ref()
-  const instances = reactive<{ hover: boolean }[]>([])
 
-  const draw = (current: number) => {
-    for (let index = 0; index < instances.length; index++) {
-      instances[index].hover = index <= current
-    }
-  }
-
-  onMounted(() => {
-    for (let i = 0; i < prop.count; i++) {
-      instances.push({ hover: false })
-    }
-  })
-
-  const redraw = () => {
-    draw(Number(prop.modelValue) - 1)
-  }
-
-  watchEffect((): void => {
-    redraw()
-    event.value = prop.readonly ? '' : 'mouseover'
-  })
+  const rateList = ref([])
 </script>
 
 <template>
-  <div class="rate" @mouseout="redraw()">
+  <div class="rate">
     <div
-      v-for="(ins, index) in instances"
-      :key="index"
-      :class="['rate-icon-parent']"
-      @[event]="draw(index)"
-      @click="emit('update:modelValue', index + 1)"
+      ref="rateRef"
+      :class="[
+        'rate-content',
+        'items-center',
+        `${readonly ? 'rate-disable' : 'rate-select'}`
+      ]"
     >
-      <div class="rate-icon">
-        <slot v-if="ins.hover" name="selected" />
-        <slot v-else name="unselected" />
-      </div>
+      <!-- <img
+        v-for="(item, index) in rateList"
+        ref="rateIconRef"
+        :key="index"
+        :src="item.isChecked ? item.fillUrl : item.emptyUrl"
+        :class="['px-3px', 'box-content']"
+        :style="{
+          width: `${width}px`,
+          height: `${height}px`
+        }"
+        :data-index="index"
+        @touchstart="onTouchstartChange"
+        @touchmove="onTouchmoveChange"
+        @click="onRateClick(index)"
+      /> -->
     </div>
   </div>
 </template>
+<style scoped lang="scss">
+  .rate {
+    &-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-disable {
+      cursor: not-allowed;
+    }
+
+    &-select {
+      cursor: pointer;
+    }
+  }
+</style>

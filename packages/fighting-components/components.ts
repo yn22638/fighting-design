@@ -10,6 +10,9 @@ export type { FButtonGroupInstance } from './button-group'
 export { default as FLink } from './link'
 export type { FLinkInstance } from './link'
 
+export { default as FRate } from './rate'
+export type { FRateInstance } from './rate'
+
 export { default as FImage } from './image'
 export type { FImageInstance } from './image'
 

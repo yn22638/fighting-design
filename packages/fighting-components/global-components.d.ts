@@ -21,6 +21,7 @@ declare module 'vue' {
     FText: typeof import('./text/src/text.vue')
     FLoading: typeof import('./loading/src/loading.vue')
     FProgress: typeof import('./progress/src/progress.vue')
+    FRate: typeof import('./rate/src/rate.vue')
     FSpace: typeof import('./space/src/space.vue')
     FDialog: typeof import('./dialog/src/dialog.vue')
     FTooltip: typeof import('./tooltip/src/tooltip.vue')

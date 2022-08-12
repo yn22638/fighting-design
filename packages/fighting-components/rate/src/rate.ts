@@ -1,4 +1,4 @@
-import type { PropType } from 'vue'
+import type { PropType, ExtractPropTypes } from 'vue'
 
 export const Props = {
   count: {
