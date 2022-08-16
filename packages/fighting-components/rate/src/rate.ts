@@ -9,9 +9,29 @@ export const Props = {
     type: Boolean as PropType<Boolean>,
     default: false
   },
-  modelValue: {
-    type: Number as PropType<Number>,
-    default: 0
+  iconPath: {
+    type: String,
+    default: 'f-icon-favorites'
+  },
+  iconCheck: {
+    type: String,
+    default: 'f-icon-bussiness-man-fill'
+  },
+  iconNoCheck: {
+    type: String,
+    default: 'f-icon-bussiness-man'
+  },
+  iconCheckColor: {
+    type: String,
+    default: 'red'
+  },
+  iconNoCheckColor: {
+    type: String,
+    default: ''
+  },
+  size: {
+    type: String,
+    default: '20'
   }
 } as const
 
